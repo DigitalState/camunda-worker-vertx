@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.11.2">
+  <bpmn:process id="externalTaskTest" name="External Task Test" isExecutable="true" camunda:versionTag="v0.1">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>SequenceFlow_1bz2an4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1bz2an4" sourceRef="StartEvent_1" targetRef="Task_01axjwb" />
+    <bpmn:serviceTask id="Task_01axjwb" name="some external task" camunda:type="external" camunda:topic="calculate-numbers">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="num1">123</camunda:inputParameter>
+          <camunda:inputParameter name="num2">321</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1bz2an4</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0z7ck1m</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_0d6tucr" name="Complete">
+      <bpmn:incoming>SequenceFlow_1gvhrwg</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0z7ck1m" sourceRef="Task_01axjwb" targetRef="Task_0f1k4f3" />
+    <bpmn:sequenceFlow id="SequenceFlow_1gvhrwg" sourceRef="Task_0f1k4f3" targetRef="EndEvent_0d6tucr" />
+    <bpmn:userTask id="Task_0f1k4f3" name="placeholder">
+      <bpmn:incoming>SequenceFlow_0z7ck1m</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1gvhrwg</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:textAnnotation id="TextAnnotation_03t7dbw">
+      <bpmn:text>External Task: calculate-numbers</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0uvs9ad" sourceRef="Task_01axjwb" targetRef="TextAnnotation_03t7dbw" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="externalTaskTest">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="213" y="244" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="219" y="280" width="24" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1bz2an4_di" bpmnElement="SequenceFlow_1bz2an4">
+        <di:waypoint xsi:type="dc:Point" x="249" y="262" />
+        <di:waypoint xsi:type="dc:Point" x="304" y="262" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="231.5" y="240.5" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0mda0ka_di" bpmnElement="Task_01axjwb">
+        <dc:Bounds x="304" y="222" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0d6tucr_di" bpmnElement="EndEvent_0d6tucr">
+        <dc:Bounds x="618" y="244" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="612" y="283" width="48" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0z7ck1m_di" bpmnElement="SequenceFlow_0z7ck1m">
+        <di:waypoint xsi:type="dc:Point" x="404" y="262" />
+        <di:waypoint xsi:type="dc:Point" x="464" y="262" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="389" y="240.5" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1gvhrwg_di" bpmnElement="SequenceFlow_1gvhrwg">
+        <di:waypoint xsi:type="dc:Point" x="564" y="262" />
+        <di:waypoint xsi:type="dc:Point" x="618" y="262" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="546" y="240.5" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_0u97msi_di" bpmnElement="Task_0f1k4f3">
+        <dc:Bounds x="464" y="222" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_03t7dbw_di" bpmnElement="TextAnnotation_03t7dbw">
+        <dc:Bounds x="360" y="130" width="127" height="51" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0uvs9ad_di" bpmnElement="Association_0uvs9ad">
+        <di:waypoint xsi:type="dc:Point" x="380" y="222" />
+        <di:waypoint xsi:type="dc:Point" x="407" y="181" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

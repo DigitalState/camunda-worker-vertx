@@ -1,0 +1,27 @@
+version: '3.2'
+
+services:
+  camunda:
+    build: camunda/.
+    environment:
+      - JAVA_OPTS=-Djava.security.egd=file:/dev/./urandom -Duser.timezone=America/Montreal
+    ports:
+      - "8055:8080"
+    networks:
+      - cam-workers
+
+  cam-worker_01:
+    build: worker/.
+    environment:
+      - JAVA_OPTS=-Duser.timezone=America/Montreal
+      - VERTICLE_NAME= camunda-worker.js
+      # - VERTX_OPTS "-Dvertx.options.eventLoopPoolSize=26 -Dvertx.options.deployment.worker=true"
+      # - VERTX_ARGS= -ha
+    ports:
+      - "8081:8080"
+    networks:
+      - cam-workers
+
+networks:
+  cam-workers:
+    driver: bridge

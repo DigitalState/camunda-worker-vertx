@@ -1,0 +1,9 @@
+curl --request POST \
+  --url http://localhost:8055/engine-rest/deployment/create \
+  --header 'Accept: application/json' \
+  --header 'Cache-Control: no-cache' \
+  --header 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+  --form deployment-name=externalTask \
+  --form enable-duplicate-filtering=false \
+  --form deploy-changed-only=false \
+  --form external-task-test.bpmn=@/PATH/TO/THE/BPMN/FILE/external-task-test.bpmn

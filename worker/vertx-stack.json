@@ -1,0 +1,43 @@
+{ 
+  "variables": {
+    "vertx.version": "3.5.1"
+  },
+  "dependencies": [
+    {
+      "groupId": "io.vertx",
+      "artifactId": "vertx-config",
+      "version": "${vertx.version}",
+      "included": true
+    },
+    {
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web-client",
+      "version": "${vertx.version}",
+      "included": true
+    },
+    {
+      "groupId": "io.vertx",
+      "artifactId": "vertx-core",
+      "version": "${vertx.version}",
+      "included": true
+    },
+    {
+      "groupId": "io.vertx",
+      "artifactId": "vertx-lang-js",
+      "version": "${vertx.version}",
+      "included": true
+    },
+    {
+      "groupId": "io.vertx",
+      "artifactId": "vertx-web",
+      "version": "${vertx.version}",
+      "included": true
+    },
+    {
+      "groupId": "io.vertx",
+      "artifactId": "vertx-hazelcast",
+      "version": "${vertx.version}",
+      "included": true
+    }
+  ]
+}
