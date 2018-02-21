@@ -1,6 +1,6 @@
 # Camunda Worker (Vertx)
 
-A Camunda external task worker that offers polyglot event-driven workers.
+A [CamundaBPM](http://camunda.org) external task worker that offers polyglot event-driven workers.
 
 The worker is based on Vert.x ([vertx.io](http://vertx.io)) and is being bootstrapped with Nashorn/Javascript (other bootstrap languages can be used if you choose).
 
