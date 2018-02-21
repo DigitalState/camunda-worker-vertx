@@ -2,7 +2,7 @@
 
 A Camunda external task worker that offers polyglot event-driven workers.
 
-The worker is based on Vert.x (vertx.io) and is being bootstrapped with Nashorn/Javascript (other bootstrap languages can be used if you choose).
+The worker is based on Vert.x ([vertx.io](vertx.io)) and is being bootstrapped with Nashorn/Javascript (other bootstrap languages can be used if you choose).
 
 The benefits of a polyglot worker allows mult-language workers to be created without having to re-program the core interactions of Camunda external tasks.
 
