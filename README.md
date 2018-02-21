@@ -1,6 +1,6 @@
 # Camunda Worker (Vertx)
 
-A [CamundaBPM](http://camunda.org) external task worker that offers polyglot event-driven workers.
+A [CamundaBPM](http://camunda.org) external task worker that offers polyglot event-driven workers with features such as: Auto-Fail-Over, High Availability, Clustering, Multiple Threads and Multi-Core Support, Polyglot language support for: Javascript(with NPM package support), Java, Groovy, Ruby, Scala, Kotlin, and Ceylon.
 
 The worker is based on Vert.x ([vertx.io](http://vertx.io)) and is being bootstrapped with Nashorn/Javascript (other bootstrap languages can be used if you choose).
 
@@ -12,7 +12,7 @@ TL;DR: [Take me to how to use it](#how-to-use-it)
 
 # How it works
 
-Overall, docker-compose deploys the `camunda` service (CamundaBPM) and the `cam-worker_01` service (Vertx instance).
+Overall, docker-compose deploys the `camunda` service (CamundaBPM) and the `cam-worker_01` service (Vertx instance).  Vert.x is deployed in a Docker container running `vertx/vertx3-alpine` which is Linux Alpine with the JVM.  Camunda is deployed in a Docker container. running `camunda/camunda-bpm-platform:tomcat-7.8.0`: A JVM with Tomcat 8 running CamundaBPM 7.8.0.  The two services share the name network through docker-compose.
 
 ## Screenshots and Reference examples
 
