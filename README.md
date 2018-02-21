@@ -83,25 +83,25 @@ Also has a example of accessing the config.json file that is deployed.
 
 Fetches Camunda external tasks from Camunda External Tasks using the defined configuration
 
-[Source](./worker/fetch-tasks/fetch-and-lock.js)
+[Source](./worker/verticles/fetch-tasks/fetch-and-lock.js)
 
 #### calculate-numbers.js
 
 Catches data from the event bus and runs a calculation (addition of two numbers) and sends it to the task-complete verticle 
 
-[Source](./worker/process-calculate-numbers/calculate-numbers.js)
+[Source](./worker/verticles/process-calculate-numbers/calculate-numbers.js)
 
 #### task-complete.js
 
 Completes the external task with the result provided by the calculate-numbers verticle.
 
-[Source](./worker/task-complete/task-complete.js)
+[Source](./worker/verticles/task-complete/task-complete.js)
 
 #### http-server.js
 
 A web server that exposes the `localhost:8081/get-tasks` endpoint, which will trigger the fetch-tasks verticle.
 
-[Source](./worker/http-server/httpserver.js)
+[Source](./worker/verticles/http-server/httpserver.js)
 
 ## Camunda Instance
 
