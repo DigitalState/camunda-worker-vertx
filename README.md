@@ -8,6 +8,7 @@ The benefits of a polyglot worker allows mult-language workers to be created wit
 
 This worker is a demo worker for showing the potential of Vertx as a External Task worker, and establishes some core use cases and configurations options.
 
+TL;DR: [Take me to how to use it](#how-to-use-it)
 
 # How it works
 
@@ -114,7 +115,7 @@ Camunda REST API: `localhost:8055/engine-rest/`
 ## How to Use it
 
 1. Open terminal into root of repo: run `docker-compose up --build`
-1. It will take a few seconds for camundaBPM to startup and Vertx.
+1. It will take a few seconds for camundaBPM and Vertx to startup.  Watch the terminal for progress.
 1. deploy the BPMN file to camunda (`localhost:8055/engine-rest`).  [See the CURL statement and BPMN file](./docs/camunda-deployment)
 1. Through the Camunda tasklist (`localhost:8055/camunda/app/tasklist`), start an instance of the process "External Task Test".  You should see a running instance afterwards in the Camunda Cockpit.
 1. In your browser go to: `localhost:8081/get-tasks`.  This is the Vertx server route that will tell vertx instance to check camunda for tasks.
