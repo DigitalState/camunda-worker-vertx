@@ -1,14 +1,14 @@
 version: '3.2'
 
 services:
-  camunda:
-    build: camunda/.
-    environment:
-      - JAVA_OPTS=-Djava.security.egd=file:/dev/./urandom -Duser.timezone=America/Montreal
-    ports:
-      - "8055:8080"
-    networks:
-      - cam-workers
+  # camunda:
+  #   build: camunda/.
+  #   environment:
+  #     - JAVA_OPTS=-Djava.security.egd=file:/dev/./urandom -Duser.timezone=America/Montreal
+  #   ports:
+  #     - "8055:8080"
+  #   networks:
+  #     - cam-workers
 
   cam-worker_01:
     build: worker/.
