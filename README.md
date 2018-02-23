@@ -10,6 +10,13 @@ This worker is a demo worker for showing the potential of Vertx as a External Ta
 
 TL;DR: [Take me to how to use it](#how-to-use-it)
 
+# Updates
+
+1. For Ruby Gem / Gemfile resolution (automatically download gemfile Gem dependencies during docker build) see: 
+    1. .rb file: https://github.com/DigitalState/camunda-worker-vertx/blob/feature-ruby-rubygems-stackmanager/worker/verticles/ruby-biz/ruby-biz.rb
+    1. gemfile: https://github.com/DigitalState/camunda-worker-vertx/blob/feature-ruby-rubygems-stackmanager/worker/Gemfile
+    1. dockerfile: https://github.com/DigitalState/camunda-worker-vertx/blob/feature-ruby-rubygems-stackmanager/worker/Dockerfile
+
 # How it works
 
 Overall, docker-compose deploys the `camunda` service (CamundaBPM) and the `cam-worker_01` service (Vertx instance).  Vert.x is deployed in a Docker container running `vertx/vertx3-alpine` which is Linux Alpine with the JVM.  Camunda is deployed in a Docker container. running `camunda/camunda-bpm-platform:tomcat-7.8.0`: A JVM with Tomcat 8 running CamundaBPM 7.8.0.  The two services share the name network through docker-compose.
