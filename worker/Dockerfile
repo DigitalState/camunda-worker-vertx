@@ -15,7 +15,7 @@ COPY vertx-stack.json ${VERTX_HOME}/vertx-stack.json
 # Download and resolve dependencies listed in stack manager
 RUN vertx resolve && rm -rf ${HOME}/.m2 
 
-
+# config.json file that will be used in the --conf argument of 'exec vertx run'
 COPY config.json ${VERTICLE_HOME}/config.json
 
 # Setup the cluster Hazelcast configuration
@@ -26,23 +26,24 @@ COPY $VERTICLE_NAME $VERTICLE_HOME/$VERTICLE_NAME
 # Copies the sub-verticles into a verticles directory
 COPY verticles $VERTICLE_HOME/verticles
 
+# -- RUBY GEMFILE ISTALL: START --
+# Copy Gemfile into VERTICLE_HOME
 COPY Gemfile $VERTICLE_HOME/Gemfile
 
-
-# Current workaround to make bundler function
+# Set Path for where bundler will get installed
+# This is set before bundler install to prevent post-install warning
 ENV PATH=$PATH:/root/.gem/jruby/2.3.0/bin
 
-#Install bundler
+# Install Bundler gem
 RUN java -jar ${VERTX_HOME}/lib/jruby-complete-9.1.13.0.jar -S gem install --user-install --no-document bundler
 
-# Show gems list so we can confirm bundler is installed
-RUN java -jar ${VERTX_HOME}/lib/jruby-complete-9.1.13.0.jar -S gem list -d
+# Install gems in gemfile located in VERTICLE_HOME
+# @TODO Make --path location configurable
+RUN BUNDLE_SILENCE_ROOT_WARNING=true java -jar ${VERTX_HOME}/lib/jruby-complete-9.1.13.0.jar -S bundle install --path=${VERTICLE_HOME}/bundle --gemfile=$VERTICLE_HOME/Gemfile
 
-RUN java -jar ${VERTX_HOME}/lib/jruby-complete-9.1.13.0.jar -S bundle install --path=${VERTICLE_HOME}/bundle --binstubs --gemfile=$VERTICLE_HOME/Gemfile
-
-# Use this when you want to test the path resolution of the search for bundle 
-# RUN java -Djruby.debug.scriptResolution=true -jar ${VERTX_HOME}/lib/jruby-complete-9.1.13.0.jar -S bundle install --path=${VERTICLE_HOME}/bundle --binstubs --gemfile=$VERTICLE_HOME/Gemfile
-
+# Print Gemfile.lock file for logging purposes, so we know what was installed by bundle install
+RUN cat $VERTICLE_HOME/Gemfile.lock
+# -- RUBY GEMFILE INSTALL: END --
 
 # Starts the starting verticle in the home directory
 WORKDIR $VERTICLE_HOME
