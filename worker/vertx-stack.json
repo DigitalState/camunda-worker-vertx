@@ -11,6 +11,12 @@
     },
     {
       "groupId": "io.vertx",
+      "artifactId": "vertx-lang-ruby",
+      "version": "${vertx.version}",
+      "included": true
+    },
+    {
+      "groupId": "io.vertx",
       "artifactId": "vertx-web-client",
       "version": "${vertx.version}",
       "included": true
